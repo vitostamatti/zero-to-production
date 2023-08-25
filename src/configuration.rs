@@ -1,5 +1,3 @@
-use env_logger::Env;
-
 #[derive(serde::Deserialize)]
 pub struct DatabaseSettings {
     pub username: String,
