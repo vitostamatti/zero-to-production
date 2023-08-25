@@ -18,12 +18,11 @@ tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 reqwest = "0.11"
 serde = { version = "1", features = ["derive"] }
 config = "0.13.3"
-uuid = { version = "0.8.1", features = ["v4"] }
-chrono = "0.4.15"
-# log = "0.4.20"
+uuid = { version = "1.4.1", features = ["v4"] }
+chrono = "0.4.26"
 env_logger = "0.10.0"
 tracing = { version = "0.1", features = ["log"] }
-# tracing-futures = "0.2.5"
+
 tracing-subscriber = { version = "0.2.12", features = [
     "registry",
     "env-filter",
@@ -31,18 +30,20 @@ tracing-subscriber = { version = "0.2.12", features = [
 tracing-bunyan-formatter = "0.2"
 tracing-log = "0.1.3"
 tracing-actix-web = "0.7.6"
+# sqlx-cli = "0.7.0"
 
 [dependencies.sqlx]
-version = "0.5.7"
+version = "0.7.1"
 default-features = false
 features = [
-    "runtime-actix-rustls",
+    # "runtime-actix-rustls",
+    "runtime-tokio",
     "macros",
     "postgres",
     "uuid",
     "chrono",
     "migrate",
-    "offline",
+    # "offline",
 ]
 
 [dev-dependencies]
