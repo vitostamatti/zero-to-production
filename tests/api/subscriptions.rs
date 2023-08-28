@@ -32,7 +32,6 @@ async fn subscribe_returns_200_when_valid_data() {
 async fn subscribe_returns_400_when_invalid_data() {
     // Arrange
     let app = spawn_app().await;
-    let client = reqwest::Client::new();
 
     let test_cases = vec![
         ("name=le%20guin", "missing the email"),
@@ -42,13 +41,8 @@ async fn subscribe_returns_400_when_invalid_data() {
 
     for (body, error_message) in test_cases {
         // Act
-        let response = client
-            .post(&format!("{}/subscriptions", &app.address))
-            .header("Content-Type", "application/x-www-form-urlencoded")
-            .body(body)
-            .send()
-            .await
-            .expect("Failed to execute request.");
+        let response = app.post_subscriptions(body.into()).await;
+
         // Assert
         assert_eq!(
             400,
@@ -63,7 +57,6 @@ async fn subscribe_returns_400_when_invalid_data() {
 async fn subscribe_returns_400_with_fields_are_present_but_empty() {
     // Arrange
     let app = spawn_app().await;
-    let client = reqwest::Client::new();
 
     let test_cases = vec![
         ("name=&email=ursula_le_guin%40gmail.com", "empty name"),
@@ -76,13 +69,8 @@ async fn subscribe_returns_400_with_fields_are_present_but_empty() {
 
     for (body, error_message) in test_cases {
         // Act
-        let response = client
-            .post(&format!("{}/subscriptions", &app.address))
-            .header("Content-Type", "application/x-www-form-urlencoded")
-            .body(body)
-            .send()
-            .await
-            .expect("Failed to execute request.");
+        let response = app.post_subscriptions(body.into()).await;
+
         // Assert
         assert_eq!(
             400,
