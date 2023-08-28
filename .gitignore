@@ -16,3 +16,5 @@ Cargo.lock
 /docs.gl
 
 .DS_storegit init
+
+mail_key.txt
