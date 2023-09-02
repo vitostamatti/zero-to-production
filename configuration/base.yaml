@@ -8,6 +8,6 @@ database:
   database_name: "newsletter"
 email_client:
   base_url: "localhost"
-  sender_email: "test@gmail.com"
+  sender_email: "vitostam@ucm.es" 
   authorization_token: "719d7c9c77da72185d129cbe4725675e-us21"
   timeout_milliseconds: 10000
