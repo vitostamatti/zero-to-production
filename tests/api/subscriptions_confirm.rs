@@ -6,6 +6,7 @@ use wiremock::{
 use crate::helpers::spawn_app;
 
 #[actix_rt::test]
+// #[tokio::test]
 async fn confirmations_without_token_are_rejected_with_a_400() {
     // Arrange
     let app = spawn_app().await;
@@ -20,6 +21,7 @@ async fn confirmations_without_token_are_rejected_with_a_400() {
 }
 
 #[actix_rt::test]
+// #[tokio::test]
 async fn confirmation_link_returns_200_when_called() {
     let app = spawn_app().await;
     let body = "name=le%20guin&email=ursula_le_guin%40gmail.com";
@@ -44,6 +46,7 @@ async fn confirmation_link_returns_200_when_called() {
 }
 
 #[actix_rt::test]
+// #[tokio::test]
 async fn clicking_on_confirmation_link_confirms_subscriber() {
     let app = spawn_app().await;
     let body = "name=le%20guin&email=ursula_le_guin%40gmail.com";
